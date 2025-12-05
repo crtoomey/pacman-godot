@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 100.0
 
+@onready var maze_blank_map: TileMapLayer = $"../MazeBlankMap"
 @onready var player: CharacterBody2D = $"../Player"
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
@@ -9,6 +10,7 @@ var speed = 100.0
 
 
 func _physics_process(delta: float) -> void:
+
 	# this is from a tutorial because i couldn't figure it out
 	navigation_agent_2d.target_position = player.global_position
 	var currentAgentPos = global_position

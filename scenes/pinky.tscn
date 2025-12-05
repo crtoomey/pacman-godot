@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1nbvvldp6tl3"]
+
+[ext_resource type="Texture2D" uid="uid://272m4dvp0mjb" path="res://assets/Pinky Sprite.png" id="1_bb8p0"]
+[ext_resource type="Script" uid="uid://bloitdgf1et2j" path="res://scripts/pinky.gd" id="1_jusne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jusne"]
+size = Vector2(32, 32)
+
+[node name="Pinky" type="CharacterBody2D"]
+script = ExtResource("1_jusne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bb8p0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jusne")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
