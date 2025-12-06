@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bynsr8alpf0ap"]
 
 [ext_resource type="Texture2D" uid="uid://ba5wvub50kme5" path="res://assets/Clyde Sprite.png" id="1_j1cmc"]
-[ext_resource type="Script" uid="uid://bb2gjnagon6v8" path="res://scenes/clyde.gd" id="1_yc8da"]
+[ext_resource type="Script" uid="uid://bb2gjnagon6v8" path="res://scripts/clyde.gd" id="1_yc8da"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jusne"]
 size = Vector2(32, 32)

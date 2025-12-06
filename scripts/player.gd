@@ -10,19 +10,19 @@ var isMovingDown = false
 
 func _physics_process(delta: float) -> void:
 	
-	var currentAgentPos = global_position
-	var nextPathPos = navigation_agent_2d.get_next_path_position()
-	var newVelocity = currentAgentPos.direction_to(nextPathPos) * speed
-	var target = 0
-	var playerX = position.x
-	var playerY = position.y
+	#var currentAgentPos = global_position
+	#var nextPathPos = navigation_agent_2d.get_next_path_position()
+	#var newVelocity = currentAgentPos.direction_to(nextPathPos) * speed
+	#var target = 0
+	#var playerX = position.x
+	#var playerY = position.y
 	
 	
 	#var collision = move_and_collide(velocity * delta)
 	#if collision:
 		#print(collision.get_collider())
 	
-	
+	print(position)
 	
 	
 	# movement stuff

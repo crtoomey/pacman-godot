@@ -1,16 +1,25 @@
 extends CharacterBody2D
 
 var speed = 100.0
-
+var scattering = false
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var player: CharacterBody2D = $"../Player"
 @onready var blinky: CharacterBody2D = $"../Blinky"
 
+
+func _ready() -> void:
+	scattering = true
+
+
 func _physics_process(delta: float) -> void:
 	
+	if scattering == true:
+		scatter()
+	else:
+		checkPlayerRotation()
 	
 	# this is from a tutorial because i couldn't figure it out
-	checkPlayerRotation()
+	
 	var currentAgentPos = global_position
 	var nextPathPos = navigation_agent_2d.get_next_path_position()
 	var newVelocity = currentAgentPos.direction_to(nextPathPos) * speed
@@ -61,3 +70,10 @@ func checkPlayerRotation():
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
+
+
+func scatter():
+	var scatterStartPos = Vector2(65, 480)
+	navigation_agent_2d.target_position = scatterStartPos
+	await get_tree().create_timer(8).timeout
+	scattering = false

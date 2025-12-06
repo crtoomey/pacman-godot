@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bx1p3eqcwu45a"]
+[gd_scene load_steps=18 format=4 uid="uid://bx1p3eqcwu45a"]
 
 [ext_resource type="Script" uid="uid://cjtd32tbsfhne" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnklate16t74w" path="res://assets/pac man tiles.png" id="1_uwrxv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ct0s1a88npnry" path="res://scenes/blinky.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://d1nbvvldp6tl3" path="res://scenes/pinky.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://c8toncxnqrhts" path="res://scenes/inky.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bynsr8alpf0ap" path="res://scenes/clyde.tscn" id="9_0tnpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("1_uwrxv")
@@ -122,6 +123,11 @@ collision_mask = 0
 
 [node name="Inky" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(440, 224)
+collision_layer = 8
+collision_mask = 0
+
+[node name="Clyde" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(557, 224)
 collision_layer = 8
 collision_mask = 0
 

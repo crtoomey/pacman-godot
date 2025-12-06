@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var speed = 100.0
 var scattering = false
 
@@ -12,16 +13,20 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	print(scattering)
 	# this is from a tutorial because i couldn't figure it out
-	if scattering == false:
-		navigation_agent_2d.target_position = player.global_position
-	else:
+	if scattering == true:
 		scatter()
+	else:
+		navigation_agent_2d.target_position = player.global_position
 		
 	var currentAgentPos = global_position
 	var nextPathPos = navigation_agent_2d.get_next_path_position()
 	var newVelocity = currentAgentPos.direction_to(nextPathPos) * speed
-	
+	var distanceToPlayer = navigation_agent_2d.distance_to_target()
+	print(distanceToPlayer)
+	if distanceToPlayer < 256:
+		scattering = true
 		
 	if navigation_agent_2d.is_navigation_finished():
 		return
@@ -38,9 +43,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 func scatter():
-	var scatterStartPos = Vector2(64, 95)
+	var scatterStartPos = Vector2(895, 480)
 	navigation_agent_2d.target_position = scatterStartPos
 	await get_tree().create_timer(8).timeout
 	scattering = false
-
-	
